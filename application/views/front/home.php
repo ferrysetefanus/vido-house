@@ -32,27 +32,27 @@
 
         <div class="carousel-inner" role="listbox">
           <div class="item active">
-            <img src="img/k.jpg" style="width: 100%; height: 600px; padding: 50px;">
+            <img src="<?= base_url('assets/frontend/img/k.jpg') ?>" style="width: 100%; height: 600px; padding: 50px;">
           </div>
           <div class="item">
-            <img src="img/res01.jpg" style="width: 100%; height: 600px; padding: 50px;">
+            <img src="<?= base_url('assets/frontend/img/res01.jpg') ?>" style="width: 100%; height: 600px; padding: 50px;">
           </div>
           <div class="item">
-            <img src="img/res02.jpg" style="width: 100%; height: 600px; padding: 50px;">
+            <img src="<?= base_url('assets/frontend/img/res02.jpg') ?>" style="width: 100%; height: 600px; padding: 50px;">
           </div>
 
           <!--bagian Benny Suparno-->
           <div class="item">
-            <img src="img/makanan.jpeg" style="width: 100%; height: 600px; padding: 50px">
+            <img src="<?= base_url('assets/frontend/img/makanan.jpeg') ?>" style="width: 100%; height: 600px; padding: 50px">
           </div>
           <div class="item">
-            <img src="img/gustogelato.jpg" style="width: 100%; height: 600px; padding: 50px">>
+            <img src="<?= base_url('assets/frontend/img/gustogelato.jpg') ?>" style="width: 100%; height: 600px; padding: 50px">>
           </div>
           <div class="item">
-            <img src="img/vido01.jpg" style="width: 100%; height: 600px; padding: 50px">
+            <img src="<?= base_url('assets/frontend/img/vido01.jpg') ?>" style="width: 100%; height: 600px; padding: 50px">
           </div>
           <div class="item">
-            <img src="img/vido02.jpeg" style="width: 100%; height: 600px; padding: 50px">
+            <img src="<?= base_url('assets/frontend/img/vido02.jpeg') ?>" style="width: 100%; height: 600px; padding: 50px">
           </div>
           <!-- bagian Benny end-->
 
@@ -95,7 +95,7 @@
               </div>
               <!--bagian joviter-->
               <div class="col-md-6 col-sm-6">
-                <img src="img/minuman.jpeg" alt="" class="img-responsive">
+                <img src="<?= base_url('assets/frontend/img/minuman.jpeg') ?>" alt="" class="img-responsive">
               </div>
             </div>
             <div class="col-md-1"></div>
@@ -118,7 +118,7 @@
                 <div class="item active left">
                   <!--bagian joviter-->
                   <div class="col-md-6 col-sm-6 left-images">
-                    <img src="img/makanan.jpeg" class="img-responsive">
+                    <img src="<?= base_url('assets/frontend/img/makanan.jpeg') ?>" class="img-responsive">
                   </div>
                   <div class="col-md-6 col-sm-6 details-text">
                     <div class="content-holder">

@@ -11,10 +11,10 @@
 					<i class="fa fa-search"></i>
 				</button>
 			</div>
-			<a href="#home">Home</a>
+			<a href="<?= base_url() ?>">Home</a>
 			<a href="#event">Event</a>
 			<a href="#menu-list">Menu</a>
-			<a href="#login">Login & Sign Up</a>
+			<a href="<?= base_url('auth/login') ?>">Login & Sign Up</a>
 			<a href="#contact">Book a table</a>
 		</div>
 		<!-- Use any element to open the sidenav -->

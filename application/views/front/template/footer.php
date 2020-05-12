@@ -36,7 +36,7 @@
 <script src="<?= base_url('assets/frontend/js/jquery.min.js') ?>"></script>
 <script src="<?= base_url('assets/frontend/js/jquery.easing.min.js') ?>"></script>
 <script src="<?= base_url('assets/frontend/js/bootstrap.min.js') ?>"></script>
-<script src="<?= base_url('assets/frontend/js/bootstrap.min.js') ?>"></script>
+<script src="<?= base_url('assets/frontend/js/custom.js') ?>"></script>
 <script src="<?= base_url('assets/frontend/contactform/contactform.js') ?>"></script>
 
 <!-- loading bagian ferry -->
