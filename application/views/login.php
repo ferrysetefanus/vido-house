@@ -29,7 +29,7 @@
                   </form>
                   <hr>
                   <div class="text-center">
-                    <a class="small" href="<?= base_url('registrasi/index') ?>">Belum punya akun? Daftar!</a><br>
+                    <a href="#exampleModal" data-toggle="modal" data-target="#exampleModal">Belum punya akun? Daftar!</a><br>
                     <a class="small" href="<?= base_url('home') ?>">Kembali ke Homepage</a>
                   </div>
                 </div>
@@ -37,11 +37,55 @@
             </div>
           </div>
         </div>
-
       </div>
-
     </div>
+  </div>
 
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Form Registrasi</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="table-responsive">
+            <form action="">
+              <div class="form-group">
+                <input class="form-control" type="text" name="nama" placeholder="Nama...">
+                <?= form_error('nama', '<div class="text-danger small ml-2">', '</div>') ?>
+              </div>
+              <div class="form-group">
+                <input class="form-control" type="text" name="username" placeholder="Username...">
+                <?= form_error('Username', '<div class="text-danger small ml-2">', '</div>') ?>
+              </div>
+              <div class="form-group">
+                <input class="form-control" type="email" name="email" placeholder="Email Valid...">
+                <?= form_error('email', '<div class="text-danger small ml-2">', '</div>') ?>
+              </div>
+              <div class="form-group">
+                <textarea class="form-control" type="text" name="alamat" placeholder="Alamat..."></textarea>
+                <?= form_error('alamat', '<div class="text-danger small ml-2">', '</div>') ?>
+              </div>
+              <div class="form-group">
+                <select class="form-control" name="jenis_kelamin"><option disabled selected>--- Jenis kelamin ---</option><option value="Laki - laki">Laki - laki</option><option value="Perempuan">Perempuan</option></select>
+                <?= form_error('jenis_kelamin', '<div class="text-danger small ml-2">', '</div>') ?>
+              </div>
+              <div class="form-group">
+               <input type="text" name="nomor_hp" class="form-control" placeholder="nomor hp">
+                <?= form_error('nomor_hp', '<div class="text-danger small ml-2">', '</div>') ?>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+            <button type="button" class="btn btn-primary">Daftar</button>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
 
   
