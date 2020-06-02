@@ -28,7 +28,27 @@ class Registrasi extends CI_Controller {
 				'role' 			=> 'user'
 			];
 
-			$this->model_user->register_user('user', $input);
+			$id = $this->model_user->register_user('user', $input);
+
+			$encrypted_id = md5($id);
+
+			$config = [];
+			$config['charset']; = 'utf-8';
+			$config['useragent'] = 'Codeigniter';
+			$config['protocol'] = 'smtp';
+			$config['mailtype'] = 'html';
+			$config['smtp_host'] = 'ssl://smtp.gmail.com';
+			$config['smtp_port'] = '465';
+			$config['smtp_timeout'] = '400';
+			$config['smtp_user'] = 'psandrezzz19@gmail.com';
+			$config['smtp_pass'] = 'passwordku';
+			$config['crlf'] = '\r\n';
+			$config['newline'] = '\r\n';
+			$config['wordwrap'] = TRUE;
+
+			$this->email->initialize($config);
+
+			$this->
 
 			$this->session->set_flashdata('pesan', "<div class='alert alert-success alert-dismissible fade show' role='alert'>Registrasi akun berhasil<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
 				<span aria-hidden='true'>&times;</span>
