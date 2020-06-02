@@ -21,6 +21,12 @@ class Auth extends CI_Controller {
 					</button>
 					</div>");
 				redirect('auth/login');
+			} else if ($login->status == 0) {
+				$this->session->set_flashdata('pesan', "<div class='alert alert-danger alert-dismissible fade show' role='alert'>Email Anda belum diverifikasi, silahkan verifikasi terlebih dahulu<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+					<span aria-hidden='true'>&times;</span>
+					</button>
+					</div>");
+				redirect('auth/login');
 			} else {
 				$data = [
 					'username' 	=> $login->username,

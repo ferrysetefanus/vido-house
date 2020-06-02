@@ -24,7 +24,7 @@ class Registrasi extends CI_Controller {
 				'alamat' 		=> $this->input->post(htmlspecialchars('alamat')),
 				'jenis_kelamin' => $this->input->post(htmlspecialchars('jenis_kelamin')),
 				'nomor_hp' 		=> $this->input->post(htmlspecialchars('nomor_hp')),
-				'status'		=> 'nonaktif',
+				'status'		=> '0',
 				'role' 			=> 'user'
 			];
 
@@ -41,21 +41,46 @@ class Registrasi extends CI_Controller {
 			$config['smtp_port'] = '465';
 			$config['smtp_timeout'] = '400';
 			$config['smtp_user'] = 'psandrezzz19@gmail.com';
-			$config['smtp_pass'] = 'passwordku';
+			$config['smtp_pass'] = 'simagatensei';
 			$config['crlf'] = '\r\n';
 			$config['newline'] = '\r\n';
 			$config['wordwrap'] = TRUE;
 
 			$this->email->initialize($config);
 
-			$this->
+			$this->email->from($config['smtp_user']);
 
-			$this->session->set_flashdata('pesan', "<div class='alert alert-success alert-dismissible fade show' role='alert'>Registrasi akun berhasil<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+			$this->email->to($email);
+
+			$this->email->subject("Verifikasi akun vido");
+
+			$this->email->message('Terimakasih telah melakukan registrasi, untuk memverifikasi silahkan klik tautan di bawah ini<br><br>' . site_url('register/verifikasi/$encrypted_id'));
+
+			if ($this->email->send()) {
+				
+				$this->session->set_flashdata('pesan', "<div class='alert alert-success alert-dismissible fade show' role='alert'>Registrasi akun berhasil, silahkan cek email untuk verifikasi<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
 				<span aria-hidden='true'>&times;</span>
 				</button>
 				</div>");
-			redirect('auth/login');
+
+				redirect('auth/login');
+			} else {
+				$this->session->set_flashdata('pesan', "<div class='alert alert-danger alert-dismissible fade show' role='alert'>Registrasi akun berhasil, namun gagal mengirim email verifikasi<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+				<span aria-hidden='true'>&times;</span>
+				</button>
+				</div>");
+
+				redirect('auth/login');
+			}	
 		}
+	}
+
+	public function verifikasi($id) {
+
+		$this->model_user->update_status($id);
+
+		echo "Selamat kamu telah memverifikasi akun kamu";
+		echo "<br><br><a href='".site_url("auth/login")."'>Kembali ke Menu Login</a>";
 	}
 }
 
