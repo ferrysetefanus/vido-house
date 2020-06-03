@@ -14,6 +14,9 @@
               <div class="col-lg-12">
                 <div class="p-5">
                   <div class="text-center">
+                    <?php if ($this->session->flashdata('pesan')) {
+                      echo $this->session->flashdata('pesan');
+                    } ?>
                     <h1 class="h4 text-gray-900 mb-4">Form Login</h1>
                   </div>
                   <form method="post" action="<?= base_url('auth/login') ?>" class="user">
@@ -52,7 +55,7 @@
         </div>
         <div class="modal-body">
           <div class="table-responsive">
-            <form action="">
+            <form action="<?= base_url('registrasi/index') ?>" method="post">
               <div class="form-group">
                 <input class="form-control" type="text" name="nama" placeholder="Nama...">
                 <?= form_error('nama', '<div class="text-danger small ml-2">', '</div>') ?>
@@ -60,6 +63,10 @@
               <div class="form-group">
                 <input class="form-control" type="text" name="username" placeholder="Username...">
                 <?= form_error('Username', '<div class="text-danger small ml-2">', '</div>') ?>
+              </div>
+              <div class="form-group">
+                <input class="form-control" type="password" name="password" placeholder="Password...">
+                <?= form_error('Password', '<div class="text-danger small ml-2">', '</div>') ?>
               </div>
               <div class="form-group">
                 <input class="form-control" type="email" name="email" placeholder="Email Valid...">
@@ -81,7 +88,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-            <button type="button" class="btn btn-primary">Daftar</button>
+            <button type="submit" class="btn btn-primary">Daftar</button>
           </div>
         </form>
       </div>

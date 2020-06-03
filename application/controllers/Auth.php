@@ -14,6 +14,8 @@ class Auth extends CI_Controller {
 			$this->load->view('login');
 			$this->load->view('back/footer');
 		} else {
+			$username = $this->input->post(htmlspecialchars('username'));
+			$password = $this->input->post(htmlspecialchars('password'));
 			$login = $this->model_user->cek_login($username, $password);
 			if ($login == FALSE) {
 				$this->session->set_flashdata('pesan', "<div class='alert alert-danger alert-dismissible fade show' role='alert'>Username atau Password Anda salah!<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
@@ -29,6 +31,7 @@ class Auth extends CI_Controller {
 				redirect('auth/login');
 			} else {
 				$data = [
+					'user_id' 	=> $login->id, 
 					'username' 	=> $login->username,
 					'role' 		=> $login->role
 				];
