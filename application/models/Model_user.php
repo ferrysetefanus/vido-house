@@ -15,27 +15,21 @@ class Model_user extends CI_model {
 
 	}
 
-	public function update_status($id) {
-
-		$data = [
-
-			'status' => 1
-		];
+	public function update_status($id, $data) {
 
 		$this->db->where('md5(id)', $id);
-		$this->db->update('user', $data);
+		$this->db->update('users', $data);
 
 		return true;
 	}
 
 	public function cek_login($username, $password) {
 
-		$result = $this->db->where('username', $username)
-				 ->where('password', $password)
-				 ->limit(1)
-				 ->get('users');
+		$this->db->where('username', $username);
 
-		$db_password = $result->row(2)->password;
+		$result = $this->db->get('users');
+
+		$db_password = $result->row(3)->password;
 
 		if (password_verify($password, $db_password)) {
 			return $result->row();

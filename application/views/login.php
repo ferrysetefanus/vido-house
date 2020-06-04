@@ -32,7 +32,7 @@
                   </form>
                   <hr>
                   <div class="text-center">
-                    <a href="#exampleModal" data-toggle="modal" data-target="#exampleModal">Belum punya akun? Daftar!</a><br>
+                    <a href="<?= base_url('Registrasi/index') ?>">Belum punya akun? Daftar!</a><br>
                     <a class="small" href="<?= base_url('home') ?>">Kembali ke Homepage</a>
                   </div>
                 </div>
@@ -62,11 +62,15 @@
               </div>
               <div class="form-group">
                 <input class="form-control" type="text" name="username" placeholder="Username...">
-                <?= form_error('Username', '<div class="text-danger small ml-2">', '</div>') ?>
+                <?= form_error('username', '<div class="text-danger small ml-2">', '</div>') ?>
               </div>
               <div class="form-group">
                 <input class="form-control" type="password" name="password" placeholder="Password...">
-                <?= form_error('Password', '<div class="text-danger small ml-2">', '</div>') ?>
+                <?= form_error('password', '<div class="text-danger small ml-2">', '</div>') ?>
+              </div>
+              <div class="form-group">
+                <input class="form-control" type="password" name="confirm_password" placeholder="Confirm Password...">
+                <?= form_error('confirm_password', '<div class="text-danger small ml-2">', '</div>') ?>
               </div>
               <div class="form-group">
                 <input class="form-control" type="email" name="email" placeholder="Email Valid...">
