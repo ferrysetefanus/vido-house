@@ -37,6 +37,18 @@ class Model_user extends CI_model {
 			return false;
 		}
 	}
+
+	public function get_all_users() {
+
+		$query = $this->db->get('users');
+		return $query->num_rows();
+	}
+
+	public function tampil_data() {
+
+		$query = $this->db->get('users');
+		return $query->result();
+	}
 }
 
 ?>

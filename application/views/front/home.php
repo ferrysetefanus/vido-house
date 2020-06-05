@@ -166,11 +166,11 @@
 
               <div class="breakfast menu-restaurant">
                 <span class="clearfix">
-                  <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Menu</a>
+                  <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Teh ES</a>
                   <span style="left: 166px; right: 44px;" class="menu-line"></span>
                   <span class="menu-price">$20.99</span>
                 </span>
-                <span class="menu-subtitle">Neque porro quisquam est qui dolorem</span>
+                <span class="menu-subtitle">Teh Es</span>
               </div>
 
               <div class="breakfast menu-restaurant">
