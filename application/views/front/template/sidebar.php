@@ -4,8 +4,12 @@
 	<!-- bagian david -->
 	<div class="container">
 		<div id="mySidenav" class="sidenav">
-			<?php if ($this->session->userdata('username')) {
+			<?php if ($this->session->userdata('username') && $this->session->userdata('role') != 'admin') {
 				echo "<h5 class='text-center'>Hallo, ". $this->session->userdata('username') ." </h5>";
+			} else if ($this->session->userdata('role') == 'admin') {
+				echo "<a href=". base_url('admin/dashboard') ."><h5 class='text-center'>Halaman Admin</h5></a>";
+			} {
+
 			} ?>
 			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 			<div class="search" style="padding: 15px;">

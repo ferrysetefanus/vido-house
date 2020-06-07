@@ -24,6 +24,13 @@
           <span>Admin Dashboard</span></a>
       </li>
 
+      <!-- Nav Item - Tables -->
+      <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('admin/data_menu') ?>">
+          <i class="fas fa-fw fa-file-invoice"></i>
+          <span>Data Menu</span></a>
+      </li>
+
       <!-- Nav Item - Charts -->
       <li class="nav-item">
         <a class="nav-link" href="<?= base_url('admin/data_user') ?>">
@@ -34,7 +41,7 @@
 
       <!-- Nav Item - Charts -->
       <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('admin/data_barang') ?>">
+        <a class="nav-link" href="<?= base_url('admin/data_booking') ?>">
           <i class="fas fa-fw fa-database"></i>
           <span>Data Booking</span></a>
       </li>
@@ -45,6 +52,7 @@
           <i class="fas fa-fw fa-file-invoice"></i>
           <span>Laporan Booking</span></a>
       </li>
+
 
       <!-- Sidebar Toggler (Sidebar) -->
       <div class="text-center d-none d-md-inline">
