@@ -20,7 +20,7 @@
 			</div>
 			<a href="<?= base_url() ?>">Home</a>
 			<a href="#event">Event</a>
-			<a href="#menu-list">Menu</a>
+			<a href="<?= base_url('menu') ?>">Menu</a>
 			<?php if ($this->session->userdata('username')) {
 				echo anchor('auth/logout', 'Logout');
 			} else {
