@@ -23,10 +23,10 @@
 			<a href="<?= base_url('menu') ?>">Menu</a>
 			<?php if ($this->session->userdata('username')) {
 				echo anchor('auth/logout', 'Logout');
+				echo anchor('booking', 'Book A Table');
 			} else {
 				echo anchor('auth/login', 'Login & Sign Up');
 			} ?>
-			<a href="#contact">Book a table</a>
 		</div>
 		<!-- Use any element to open the sidenav -->
 		<span onclick="openNav()" class="pull-right menu-icon">☰</span>

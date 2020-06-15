@@ -2,7 +2,7 @@
 	<?php if ($this->session->flashdata('pesan')) {
 		echo $this->session->flashdata('pesan');
 	} ?>
-	<a class="btn btn-primary btn-sm mb-3" href="<?= base_url('admin/data_menu/tambah_menu') ?>">Tambah Menu</a>
+	<a class="btn btn-primary btn-sm mb-3" href="<?= base_url('admin/data_menu/tambah_menu') ?>">Tambah Menu <i class="fas fa-plus fa-sm"></i></a>
 	<div class="table-responsive">
 		<table class="table table-hover text-center">
 			<tr>

@@ -1,4 +1,5 @@
 <div class="container-fluid">
+	<h1>ini menu</h1>
 	<div class="row mt-5">
 	<?php foreach ($menu as $menu) : ?>
 		<?php if ($menu->status == "Publish") { ?>

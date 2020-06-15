@@ -2,6 +2,13 @@
 
 class Data_menu extends CI_Controller {
 
+	public function __construct() {
+
+		if ($this->session->userdata('role') != 'admin') {
+					redirect('');
+				}		
+	}
+
 	public function index() {
 
 		$config['base_url'] = base_url('admin/data_menu/index');
