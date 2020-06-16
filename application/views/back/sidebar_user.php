@@ -19,7 +19,7 @@
 
       <!-- Nav Item - Tables -->
       <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('admin/data_menu') ?>">
+        <a class="nav-link" href="<?= base_url('booking') ?>">
           <i class="fas fa-fw fa-file-invoice"></i>
           <span>Booking</span></a>
       </li>

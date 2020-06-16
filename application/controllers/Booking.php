@@ -41,16 +41,17 @@ class Booking extends CI_Controller {
 
 		$this->pagination->initialize($config);
 		$data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-		$data['menu'] = $this->model_booking->tampil_data($config['per_page'], $data['page']);
+		$data['jumlah'] = $this->model_booking->tampil_jumlah_data($this->session->userdata('user_id'));
+		$data['booking'] = $this->model_booking->tampil_data($config['per_page'], $data['page'], $this->session->userdata('user_id'));
 		$data['pagination'] = $this->pagination->create_links();
 		$data['title'] = 'Booking';
 		$this->load->view('back/header', $data);
 		$this->load->view('back/sidebar_user');
-		$this->load->view('booking');
+		$this->load->view('back/booking');
 		$this->load->view('back/footer');
 	}
-
-	public function booking() {
+ 
+	public function tambah_booking() {
 
 		$this->form_validation->set_rules('nama', 'Nama', 'trim|required', ['required' => 'Nama wajib diisi!']);
 		$this->form_validation->set_rules('meja', 'Meja', 'trim|required', ['required' => 'Meja wajib diisi!']);
@@ -59,14 +60,14 @@ class Booking extends CI_Controller {
 
 		if ($this->form_validation->run() == FALSE) {
 			
+			$data['meja'] = $this->model_meja->get_data();
 			$data['title'] = "Form Booking";
 			$this->load->view('back/header', $data);
 			$this->load->view('back/sidebar_user');
-			$this->load->view('form_booking');
+			$this->load->view('back/form_booking');
 			$this->load->view('back/footer');
 		} else {
 
-			$id_meja = $this->input->post(htmlspecialchars('id_meja'), TRUE);
 			$nama = $this->input->post(htmlspecialchars('nama'), TRUE);
 			$meja = $this->input->post(htmlspecialchars('meja'), TRUE);
 			$hari = $this->input->post(htmlspecialchars('hari'), TRUE);
@@ -74,11 +75,11 @@ class Booking extends CI_Controller {
 
 			$data = [
 
+				'id_user' => $this->session->userdata('user_id'),
 				'nama' => $nama,
 				'meja' => $meja,
 				'hari' => $hari,
-				'tlp' => $tlp,
-				'id_meja' => $id_meja,
+				'telepon' => $tlp,
 				'status' => 'Belum Dibayar'
 			];
 
@@ -87,7 +88,7 @@ class Booking extends CI_Controller {
 				<span aria-hidden='true'>&times;</span>
 				</button>
 				</div>");
-			redirect('booking/index');
+			redirect('booking');
 
 		}
 	}

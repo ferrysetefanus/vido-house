@@ -10,6 +10,16 @@ class Checkout extends CI_Controller {
 		}	
 	}
 
+	public function index() {
+
+		$data['title'] = "Halaman chekcout"
+		$this->load->view('back/header', $data);
+		$this->load->view('back/sidebar_user');
+		$this->load->view('back/checkout');
+		$this->load->view('back/footer');
+
+	}
+
 	public function checkout() {
 
 		$this->form_validation->set_rules('nama_rekening', 'Nama Akun', 'trim|required', ['required' => 'Wajib diisi!']);
@@ -23,7 +33,7 @@ class Checkout extends CI_Controller {
 			$data['title'] = 'Halaman Checkout';
 			$this->load->view('back/header', $data);
 			$this->load->view('back/sidebar_user');
-			$this->load->view('chekcout');
+			$this->load->view('back/form_checkout');
 			$this->load->view('back/footer');
 
 		} else {
@@ -35,6 +45,29 @@ class Checkout extends CI_Controller {
 			$catatan = $this->input->post(htmlspecialchars('catatan'), TRUE);
 			$gambar = $_FILES['gambar']['name'];
 
+			if ($gambar = "") {
+
+			} else {
+
+				$config['upload_path'] = './assets/uploads/menu';
+				$config['allowed_types'] = 'jpg|jpeg|png|gif';
+				$config['max_size'] = 2000;
+				$config['overwrite'] = TRUE;
+
+				$this->load->library('upload', $config);
+
+				if (!$this->upload->do_upload('gambar')) {
+					$this->session->set_flashdata('pesan', "<div class='alert alert-danger alert-dismissible fade show' role='alert'>Gambar gagal diupload<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+						<span aria-hidden='true'>&times;</span>
+						</button>
+						</div>");
+					redirect('checkout/index');
+				} else {
+
+					$gambar = $this->upload->data('file_name');
+				}
+			}
+
 			$data = [
 
 				'id_booking' => $id_booking,
@@ -45,9 +78,19 @@ class Checkout extends CI_Controller {
 				'gambar' => $gambar
 			];
 
-		}
+			$this->model_menu->tambah_menu('checkout', $data);
 
+			$this->session->set_flashdata('pesan', "<div class='alert alert-success alert-dismissible fade show' role='alert'>Checkout berhasil, silahkan tunggu konfirmasi dari admin<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+				<span aria-hidden='true'>&times;</span>
+				</button>
+				</div>");
+
+			redirect('booking/index');
+
+		}
 	}
+
+
 }
 
 ?>
