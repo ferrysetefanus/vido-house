@@ -19,33 +19,38 @@
 		<a class="btn btn-primary btn-sm mb-3 ml-3" href="<?= base_url('booking/tambah_booking') ?>">Booking <i class="fas fa-plus fa-sm"></i></a>
 	</div>
 	<div class="row">
-		<div class="table-responsive">
-			<table class="table table-hover text-center">
-				<tr>
-					<th>No</th>
-					<th>Nama</th>
-					<th>Meja</th>
-					<th>Harga</th>
-					<th>Hari</th>
-					<th>Status</th>
-					<th>Aksi</th>
-				</tr>
-				<?php $no = 1; ?>
-				<?php foreach ($booking as $b) : ?>
+		<div class="col-xl-12 col-md-6 mb-4">
+			<?php if ($this->session->flashdata('pesan')) {
+				echo $this->session->flashdata('pesan');
+			} ?>
+			<div class="table-responsive">
+				<table class="table table-hover text-center">
 					<tr>
-						<td><?= $no++ ?></td>
-						<td><?= $b->nama ?></td>
-						<td><?= $b->meja ?></td>
-						<td><?= "Rp " . number_format( $b->harga, 2, ',', '.') ?></td>
-						<td><?= $b->hari ?></td>
-						<td><?= $b->status ?></td>
-						<td><?= anchor('checkout/' . $b->id, '<div class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></div>') ?></td>
+						<th>No</th>
+						<th>Nama</th>
+						<th>Meja</th>
+						<th>Harga</th>
+						<th>Hari</th>
+						<th>Status</th>
+						<th>Aksi</th>
 					</tr>
-				<?php endforeach; ?>			
-			</table>
-			<div class="row">
-				<div class="col">
-					<?= $pagination ?>
+					<?php $no = 1; ?>
+					<?php foreach ($booking as $b) : ?>
+						<tr>
+							<td><?= $no++ ?></td>
+							<td><?= $b->nama ?></td>
+							<td><?= $b->nomor_meja ?></td>
+							<td><?= "Rp " . number_format( $b->harga, 2, ',', '.') ?></td>
+							<td><?= $b->hari ?></td>
+							<td><?= $b->status ?></td>
+							<td><?= anchor('checkout/bayar/' . $b->id, '<div class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></div>') ?></td>
+						</tr>
+					<?php endforeach; ?>			
+				</table>
+				<div class="row">
+					<div class="col">
+						<?= $pagination ?>
+					</div>
 				</div>
 			</div>
 		</div>

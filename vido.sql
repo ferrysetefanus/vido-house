@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 08 Jun 2020 pada 19.22
--- Versi server: 10.4.11-MariaDB
--- Versi PHP: 7.4.1
+-- Generation Time: Jun 17, 2020 at 03:55 PM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,7 +25,73 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `menu`
+-- Table structure for table `booking`
+--
+
+CREATE TABLE `booking` (
+  `id` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `meja` int(11) NOT NULL,
+  `hari` date NOT NULL,
+  `telepon` varchar(255) NOT NULL,
+  `status` enum('Belum Dibayar','Sudah Dibayar','Batal') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `booking`
+--
+
+INSERT INTO `booking` (`id`, `id_user`, `nama`, `meja`, `hari`, `telepon`, `status`) VALUES
+(4, 14, 'ferry', 1, '2020-06-17', '081347923053', 'Belum Dibayar');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `checkout`
+--
+
+CREATE TABLE `checkout` (
+  `id` int(11) NOT NULL,
+  `id_booking` int(11) NOT NULL,
+  `nama_rekening` varchar(255) NOT NULL,
+  `nomor_rekening` varchar(255) NOT NULL,
+  `nominal` int(11) NOT NULL,
+  `catatan` text NOT NULL,
+  `gambar` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `checkout`
+--
+
+INSERT INTO `checkout` (`id`, `id_booking`, `nama_rekening`, `nomor_rekening`, `nominal`, `catatan`, `gambar`) VALUES
+(6, 4, 'ferry', '171103248', 10293802, 'adsfjald', '1.png');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `meja`
+--
+
+CREATE TABLE `meja` (
+  `id` int(11) NOT NULL,
+  `meja` varchar(255) NOT NULL,
+  `harga` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `meja`
+--
+
+INSERT INTO `meja` (`id`, `meja`, `harga`) VALUES
+(1, '01', 150000),
+(2, '02', 250000);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `menu`
 --
 
 CREATE TABLE `menu` (
@@ -41,7 +107,7 @@ CREATE TABLE `menu` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -59,24 +125,46 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `nama`, `username`, `password`, `email`, `alamat`, `jenis_kelamin`, `nomor_hp`, `status`, `role`, `created_at`) VALUES
-(13, 'admin', 'admin', '$2y$12$wTBXTn7KZR.MYwFEuzZpZeofMNmAtdDSSntCmRqTl4H98atyCsTeO', 'psandrezzz19@gmail.com', 'serdam 95', 'Laki - laki', '081347923053', 1, 'admin', '2020-06-05 12:05:13');
+(13, 'admin', 'admin', '$2y$12$wTBXTn7KZR.MYwFEuzZpZeofMNmAtdDSSntCmRqTl4H98atyCsTeO', 'psandrezzz19@gmail.com', 'serdam 95', 'Laki - laki', '081347923053', 1, 'admin', '2020-06-05 12:05:13'),
+(14, 'ferry', 'ferry', '$2y$12$ALUvjasZzHBvg4kiCbnTU.UQBkHyh/S41FmUYn/BGcitrhqZrtXe2', 'psandrezzz15@gmail.com', 'serdam 95', 'Laki - laki', '081347923054', 1, 'user', '2020-06-16 13:23:53');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `menu`
+-- Indexes for table `booking`
+--
+ALTER TABLE `booking`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_user` (`id_user`),
+  ADD KEY `meja` (`meja`);
+
+--
+-- Indexes for table `checkout`
+--
+ALTER TABLE `checkout`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_booking` (`id_booking`);
+
+--
+-- Indexes for table `meja`
+--
+ALTER TABLE `meja`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `menu`
 --
 ALTER TABLE `menu`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
@@ -85,20 +173,55 @@ ALTER TABLE `users`
   ADD UNIQUE KEY `nomor_hp` (`nomor_hp`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `menu`
+-- AUTO_INCREMENT for table `booking`
+--
+ALTER TABLE `booking`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `checkout`
+--
+ALTER TABLE `checkout`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `meja`
+--
+ALTER TABLE `meja`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `menu`
 --
 ALTER TABLE `menu`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT untuk tabel `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `booking`
+--
+ALTER TABLE `booking`
+  ADD CONSTRAINT `booking_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `booking_ibfk_2` FOREIGN KEY (`meja`) REFERENCES `meja` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `checkout`
+--
+ALTER TABLE `checkout`
+  ADD CONSTRAINT `checkout_ibfk_1` FOREIGN KEY (`id_booking`) REFERENCES `booking` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -15,7 +15,7 @@ class Booking extends CI_Controller {
 		$config['base_url'] = base_url('booking/index');
 		$config['total_rows'] = $this->model_menu->get_all_menu(); 
 		$config['per_page'] = 5;
-		$config['uri_segment'] = 4;
+		$config['uri_segment'] = 3;
 		$choice = $config['total_rows'] / $config['per_page'];
 		$config['num_links'] = floor($choice);
 
@@ -41,8 +41,8 @@ class Booking extends CI_Controller {
 
 		$this->pagination->initialize($config);
 		$data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-		$data['jumlah'] = $this->model_booking->tampil_jumlah_data($this->session->userdata('user_id'));
-		$data['booking'] = $this->model_booking->tampil_data($config['per_page'], $data['page'], $this->session->userdata('user_id'));
+		$data['jumlah'] = $this->model_booking->tampil_jumlah_data_user($this->session->userdata('user_id'));
+		$data['booking'] = $this->model_booking->tampil_data_user($config['per_page'], $data['page'], $this->session->userdata('user_id'));
 		$data['pagination'] = $this->pagination->create_links();
 		$data['title'] = 'Booking';
 		$this->load->view('back/header', $data);

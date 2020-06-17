@@ -21,9 +21,11 @@
 			<a href="<?= base_url() ?>">Home</a>
 			<a href="#event">Event</a>
 			<a href="<?= base_url('menu') ?>">Menu</a>
-			<?php if ($this->session->userdata('username')) {
+			<?php if ($this->session->userdata('username') && $this->session->userdata('role') == 'user') {
 				echo anchor('auth/logout', 'Logout');
 				echo anchor('booking', 'Book A Table');
+			} else if ($this->session->userdata('username') && $this->session->userdata('role') == 'admin') {
+				echo anchor('auth/logout', 'Logout');
 			} else {
 				echo anchor('auth/login', 'Login & Sign Up');
 			} ?>
