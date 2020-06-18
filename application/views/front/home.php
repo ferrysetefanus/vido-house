@@ -13,7 +13,7 @@
               <h2>Nikmati Sensasi Rasa dan Kenikmatan Gaya Italia</h2>
               <!--h1 dan h2 Bagian Ryan Septian-->
               <!-- Marquee bagian Benny Supano -->
-              <marquee vspace="40px"> Welcome to Vido Gelato. Jl. Nusa Indah III No.99 Darat Sekip, Kota Pontianak. Hari Senin - Minggu. Jam buka 09.30 - 22.00. Selamat Menikmati. </marquee>
+              <marquee vspace="40px" style="color: orange; font-weight: bolder;"> Welcome to Vido Gelato. Jl. Nusa Indah III No.99 Darat Sekip, Kota Pontianak. Hari Senin - Minggu. Jam buka 09.30 - 22.00. Selamat Menikmati. </marquee>
             </div>
           </div>
         </div>

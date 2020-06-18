@@ -44,6 +44,7 @@ class Data_booking extends CI_Controller {
 
 		$data['title'] = "Admin : Data Booking";
 		$data['booking'] = $this->model_booking->tampil_data($config['per_page'], $data['page']);
+		$data['booking_baru'] = $this->model_booking->tampil_booking_baru();
 		$data['pagination'] = $this->pagination->create_links();
 		$this->load->view('back/header', $data);
 		$this->load->view('back/sidebar');
@@ -57,6 +58,7 @@ class Data_booking extends CI_Controller {
 		$id_booking = ['id' => $id];
 		$data['title'] = 'Admin : Edit Booking';
 		$data['booking'] = $this->model_booking->edit('booking', $id_booking);
+		$data['booking_baru'] = $this->model_booking->tampil_booking_baru();
 		$this->load->view('back/header', $data);
 		$this->load->view('back/sidebar');
 		$this->load->view('back/edit_data_booking');
@@ -100,6 +102,7 @@ class Data_booking extends CI_Controller {
 		$id_booking = ['id_booking' => $id];
 		$data['title'] = "Tampilkan pembayaran";
 		$data['bayar'] = $this->model_booking->tampil_bayar($id_booking);
+		$data['booking_baru'] = $this->model_booking->tampil_booking_baru();
 		$this->load->view('back/header', $data);
 		$this->load->view('back/sidebar');
 		$this->load->view('back/tampil_bayar');

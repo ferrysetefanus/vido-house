@@ -43,7 +43,7 @@
       <li class="nav-item">
         <a class="nav-link" href="<?= base_url('admin/data_booking') ?>">
           <i class="fas fa-fw fa-database"></i>
-          <span>Data Booking</span></a>
+          <span>Data Booking  <button class="btn btn-danger btn-sm text-white"><?= $booking_baru ?></button></span></a>
       </li>
 
 

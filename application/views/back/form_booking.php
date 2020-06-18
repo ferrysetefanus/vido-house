@@ -15,7 +15,7 @@
 					<select name="meja" id="" class="form-control">
 						<option disabled selected>--- Pilih Meja ---</option>
 						<?php foreach ($meja as $m) : ?>
-							<?= '<option value="'. $m->id .'">'. $m->meja . " - Rp " .  number_format($m->harga, 2, ',', '.'). '</option>' ?>
+							<?= '<option value="'. $m->id .'">'. $m->nomor_meja . " - Rp " .  number_format($m->harga, 2, ',', '.'). '</option>' ?>
 						<?php endforeach ?>
 					</select>
 					<?= form_error('meja', '<div class="text-danger small ml-2">', '</div>') ?>

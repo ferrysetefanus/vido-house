@@ -84,7 +84,7 @@ class Booking extends CI_Controller {
 			];
 
 			$this->model_booking->tambah_data('booking', $data);
-			$this->session->set_flashdata('pesan', "<div class='alert alert-danger alert-dismissible fade show' role='alert'>Booking berhasil ditambahkan, silahkan melakukan checkout<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+			$this->session->set_flashdata('pesan', "<div class='alert alert-success alert-dismissible fade show' role='alert'>Booking berhasil ditambahkan, silahkan melakukan pembayaran<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
 				<span aria-hidden='true'>&times;</span>
 				</button>
 				</div>");

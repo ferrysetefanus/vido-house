@@ -61,5 +61,11 @@ class Model_booking extends CI_Model {
 		$this->db->where($id);
 		return $this->db->get('checkout')->result();
 	}
+
+	public function tampil_booking_baru() {
+
+		$this->db->where('status', 'Belum Dibayar');
+		return $this->db->get('booking')->num_rows();
+	}
 }
 ?>

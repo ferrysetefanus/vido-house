@@ -2,6 +2,14 @@
 
 class Registrasi extends CI_Controller {
 
+	public function __construct() {
+
+		parent::__construct();
+		if ($this->session->userdata('user_id')) {
+			redirect('');
+		}
+	}
+
 	public function index() {
 
 		$this->form_validation->set_rules('nama', 'Nama', 'trim|min_length[4]|required', ['required' => 'Nama wajib diisii!']);

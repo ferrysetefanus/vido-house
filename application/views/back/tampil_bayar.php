@@ -2,8 +2,8 @@
 	<div class="row">
 		<div class="col-md-8 mx-auto">
 			<?php if (!$bayar) {
-				echo "Belum ada Pembayaran";
-				echo anchor('admin/data_booking', 'Kembali');
+				echo "Belum ada Pembayaran<br>";
+				echo "<a href='" . base_url('admin/data_booking') . "'><button class='btn btn-secondary btn-sm'>Kembali</button></a>";
 			} else { ?>
 				<?php foreach ($bayar as $bayar) :  ?>
 					<div class="card">

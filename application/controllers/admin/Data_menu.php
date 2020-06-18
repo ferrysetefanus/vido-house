@@ -44,6 +44,7 @@ class Data_menu extends CI_Controller {
 
 		$data['title'] = "Admin : Data Menu";
 		$data['menu'] = $this->model_menu->tampil_data($config['per_page'], $data['page']);
+		$data['booking_baru'] = $this->model_booking->tampil_booking_baru();
 		$data['pagination'] = $this->pagination->create_links();
 		$this->load->view('back/header', $data);
 		$this->load->view('back/sidebar');
@@ -54,6 +55,7 @@ class Data_menu extends CI_Controller {
 	public function tambah_menu() {
 
 		$data['title'] = "Admin : Tambah Data Menu";
+		$data['booking_baru'] = $this->model_booking->tampil_booking_baru();
 		$this->load->view('back/header', $data);
 		$this->load->view('back/sidebar');
 		$this->load->view('back/tambah_data_menu');
@@ -118,6 +120,7 @@ class Data_menu extends CI_Controller {
 		$id_menu = ['id' => $id];
 		$data['title'] = 'Admin : Edit Menu';
 		$data['menu'] = $this->model_menu->edit_menu('menu', $id_menu);
+		$data['booking_baru'] = $this->model_booking->tampil_booking_baru();
 		$this->load->view('back/header', $data);
 		$this->load->view('back/sidebar');
 		$this->load->view('back/edit_data_menu');

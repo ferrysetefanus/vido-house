@@ -11,6 +11,21 @@ class Checkout extends CI_Controller {
 	}
 
 	public function bayar($id_booking) {
+		if ($this->model_checkout->cek_batal($id_booking) == TRUE) {
+
+			$this->session->set_flashdata('pesan', "<div class='alert alert-danger alert-dismissible fade show' role='alert'>Booking ini telah dibatalkan<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+				<span aria-hidden='true'>&times;</span>
+				</button>
+				</div>");
+			redirect('booking/index');
+		} else if ($this->model_checkout->cek_bayar($id_booking) == TRUE) {
+
+			$this->session->set_flashdata('pesan', "<div class='alert alert-warning alert-dismissible fade show' role='alert'>Anda sudah melakukan pembayaran pada booking ini, silahkan tunggu pengecekan dari admin<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+				<span aria-hidden='true'>&times;</span>
+				</button>
+				</div>");
+			redirect('booking/index');
+		} else {
 
 		$this->form_validation->set_rules('nama_rekening', 'Nama Akun', 'trim|required', ['required' => 'Wajib diisi!']);
 		$this->form_validation->set_rules('nomor_rekening', 'Nomor Rekening', 'trim|required', ['required' => 'Wajib diisi!']);
@@ -26,15 +41,6 @@ class Checkout extends CI_Controller {
 			$this->load->view('back/footer');
 
 		} else {
-
-			if ($this->model_checkout->cek_bayar($id_booking) == TRUE) {
-
-				$this->session->set_flashdata('pesan', "<div class='alert alert-warning alert-dismissible fade show' role='alert'>Anda sudah melakukan pembayaran pada booking ini, silahkan tunggu pengecekan dari dari admin<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-					<span aria-hidden='true'>&times;</span>
-					</button>
-					</div>");
-				redirect('booking/index');
-			} else {
 
 				$id_booking = $this->input->post(htmlspecialchars('id_booking'), TRUE);
 				$nama_rekening = $this->input->post(htmlspecialchars('nama_rekening'), TRUE);
