@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 17, 2020 at 03:55 PM
+-- Generation Time: Jun 18, 2020 at 05:39 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -43,7 +43,8 @@ CREATE TABLE `booking` (
 --
 
 INSERT INTO `booking` (`id`, `id_user`, `nama`, `meja`, `hari`, `telepon`, `status`) VALUES
-(4, 14, 'ferry', 1, '2020-06-17', '081347923053', 'Belum Dibayar');
+(4, 14, 'ferry', 1, '2020-06-17', '081347923053', 'Batal'),
+(5, 14, 'tes', 2, '2020-06-19', '081347923053', 'Batal');
 
 -- --------------------------------------------------------
 
@@ -76,7 +77,7 @@ INSERT INTO `checkout` (`id`, `id_booking`, `nama_rekening`, `nomor_rekening`, `
 
 CREATE TABLE `meja` (
   `id` int(11) NOT NULL,
-  `meja` varchar(255) NOT NULL,
+  `nomor_meja` varchar(255) NOT NULL,
   `harga` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -84,7 +85,7 @@ CREATE TABLE `meja` (
 -- Dumping data for table `meja`
 --
 
-INSERT INTO `meja` (`id`, `meja`, `harga`) VALUES
+INSERT INTO `meja` (`id`, `nomor_meja`, `harga`) VALUES
 (1, '01', 150000),
 (2, '02', 250000);
 
@@ -180,7 +181,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `booking`
 --
 ALTER TABLE `booking`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `checkout`
